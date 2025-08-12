@@ -40,7 +40,7 @@ if 'teams' not in st.session_state:
 
 if st.sidebar.button("Reset all teams"):
     init_state(num_subteams)
-    st.experimental_rerun()
+    st.rerun()
 
 st.sidebar.markdown("---")
 st.sidebar.write("Click a Kill or Revive button to change a sub-team's state.")
@@ -88,11 +88,11 @@ def render_team(column, team_name, color_hex):
             with c1:
                 if st.button("Kill", key=f"kill_{team_name}_{idx}"):
                     st.session_state['teams'][team_name][idx]['dead_until'] = time.time() + 300
-                    st.experimental_rerun()
+                    st.rerun()
             with c2:
                 if st.button("Revive", key=f"revive_{team_name}_{idx}"):
                     st.session_state['teams'][team_name][idx]['dead_until'] = 0.0
-                    st.experimental_rerun()
+                    st.rerun()
 
             column.markdown("</div>", unsafe_allow_html=True)
 
